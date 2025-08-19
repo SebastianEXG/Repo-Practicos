@@ -8,6 +8,8 @@ namespace Practico3
             TDni.KeyPress += TDni_KeyPress;
             TApellido.KeyPress += TApellido_KeyPress;
             TNombre.KeyPress += TNombre_KeyPress;
+            RBVaron.CheckedChanged += RB_CheckedChanged;
+            RBMujer.CheckedChanged += RB_CheckedChanged;
         }
 
         private void TDni_KeyPress(object sender, KeyPressEventArgs e)
@@ -81,7 +83,7 @@ namespace Practico3
             if (!string.IsNullOrWhiteSpace(nombreCompleto))
             {
                 DialogResult ask;
-          
+
                 ask = MessageBox.Show(
                     $"Seguro que desea eliminar al cliente: {nombreCompleto}?",
                     "Confirmar",
@@ -110,6 +112,38 @@ namespace Practico3
                 MessageBox.Show("No hay cliente para eliminar", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+        }
+
+        private void PanelDatos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PBHombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BSalir_Click(object sender, EventArgs e)
+        {
+           this.Close();
+        }
+
+        private void RB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RBVaron.Checked)
+            {
+                PBHombre.Image = Properties.Resources.IconHombre;
+            }
+            else if (RBMujer.Checked)
+            {
+                PBHombre.Image = Properties.Resources.IconMujer;
             }
         }
     }
